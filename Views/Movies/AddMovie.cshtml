@@ -1,0 +1,81 @@
+﻿@model WebApplication2.Models.Movie
+
+@{
+    ViewData["Title"] = "Add Movie";
+}
+
+<h1>Add a Movie</h1>
+
+<form asp-action="AddMovie" method="post">
+    <div asp-validation-summary="All" style="color: crimson;"></div>
+
+    <div>
+        <label asp-for="Category"></label><br />
+        <input asp-for="Category" />
+        <span asp-validation-for="Category" style="color: crimson;"></span>
+    </div>
+    <br />
+
+    <div>
+        <label asp-for="Title"></label><br />
+        <input asp-for="Title" />
+        <span asp-validation-for="Title" style="color: crimson;"></span>
+    </div>
+    <br />
+
+    <div>
+        <label asp-for="Year"></label><br />
+        <input asp-for="Year" />
+        <span asp-validation-for="Year" style="color: crimson;"></span>
+    </div>
+    <br />
+
+    <div>
+        <label asp-for="Director"></label><br />
+        <input asp-for="Director" />
+        <span asp-validation-for="Director" style="color: crimson;"></span>
+    </div>
+    <br />
+
+    <div>
+        <label asp-for="Rating"></label><br />
+        <select asp-for="Rating">
+            <option value="">-- Select --</option>
+            <option value="G">G</option>
+            <option value="PG">PG</option>
+            <option value="PG-13">PG-13</option>
+            <option value="R">R</option>
+        </select>
+        <span asp-validation-for="Rating" style="color: crimson;"></span>
+    </div>
+    <br />
+
+    <div>
+        <label>Edited (optional)</label><br />
+        <select asp-for="Edited">
+            <option value="">-- Select --</option>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select>
+    </div>
+    <br />
+
+    <div>
+        <label asp-for="LentTo">Lent To (optional)</label><br />
+        <input asp-for="LentTo" />
+    </div>
+    <br />
+
+    <div>
+        <label asp-for="Notes">Notes (optional, max 25 chars)</label><br />
+        <input asp-for="Notes" />
+        <span asp-validation-for="Notes" style="color: crimson;"></span>
+    </div>
+    <br />
+
+    <button type="submit">Submit Movie</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,6 +1,4 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using WebApplication2.Models;
 
 namespace WebApplication2.Controllers
 {
@@ -11,15 +9,9 @@ namespace WebApplication2.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult GetToKnowJoel()
         {
             return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

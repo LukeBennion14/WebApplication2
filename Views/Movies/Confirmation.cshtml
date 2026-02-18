@@ -1,0 +1,11 @@
+﻿@model WebApplication2.Models.Movie
+
+@{
+    ViewData["Title"] = "Confirmation";
+}
+
+<h1>Movie Added!</h1>
+
+<p><strong>@Model.Title</strong> was saved to the database.</p>
+
+<a asp-controller="Movies" asp-action="AddMovie">Add another movie</a>
