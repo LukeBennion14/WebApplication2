@@ -1,0 +1,79 @@
+﻿@model IEnumerable<WebApplication2.Models.Movie>
+
+@{
+    ViewData["Title"] = "Movie Collection";
+}
+
+<!-- Page Heading -->
+<div class="mb-4">
+    <h1 class="display-5">Joel Hilton Movie Collection</h1>
+    <p class="text-muted">
+        This page displays Joel Hilton’s personal movie collection.
+        You can view, edit, or remove movies from the list below.
+    </p>
+</div>
+
+<!-- Movie Table Card -->
+<div class="card shadow-sm">
+    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Movie List</h5>
+        <a asp-action="AddMovie" class="btn btn-light btn-sm">
+            + Add Movie
+        </a>
+    </div>
+
+    <div class="card-body">
+
+        <table class="table table-striped table-hover table-bordered align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>Title</th>
+                    <th>Year</th>
+                    <th>Director</th>
+                    <th>Rating</th>
+                    <th>Edited</th>
+                    <th>Copied To Plex</th>
+                    <th>Lent To</th>
+                    <th>Notes</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var movie in Model)
+                {
+                    <tr>
+                        <td>@movie.Title</td>
+                        <td>@movie.Year</td>
+                        <td>@movie.Director</td>
+                        <td>
+                            <span class="badge bg-secondary">@movie.Rating</span>
+                        </td>
+                        <td>
+                            <span class="badge @(movie.Edited ? "bg-success" : "bg-danger")">
+                                @(movie.Edited ? "Yes" : "No")
+                            </span>
+                        </td>
+                        <td>
+                            <span class="badge @(movie.CopiedToPlex ? "bg-success" : "bg-danger")">
+                                @(movie.CopiedToPlex ? "Yes" : "No")
+                            </span>
+                        </td>
+                        <td>@movie.LentTo</td>
+                        <td>@movie.Notes</td>
+                        <td class="text-center">
+                            <a asp-action="Edit" asp-route-id="@movie.MovieId"
+                               class="btn btn-sm btn-outline-primary me-1">
+                                Edit
+                            </a>
+                            <a asp-action="Delete" asp-route-id="@movie.MovieId"
+                               class="btn btn-sm btn-outline-danger">
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
