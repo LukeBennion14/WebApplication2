@@ -7,8 +7,9 @@ namespace WebApplication2.Models
         [Key]
         public int MovieId { get; set; }
 
-        [Required]
-        public string Category { get; set; } = string.Empty;
+        // In the DB this is CategoryId (foreign key), not a text Category
+        [Display(Name = "Category")]
+        public int? CategoryId { get; set; }
 
         [Required]
         public string Title { get; set; } = string.Empty;
@@ -17,20 +18,20 @@ namespace WebApplication2.Models
         [Range(1888, 3000)]
         public int Year { get; set; }
 
+        public string? Director { get; set; }
+
+        public string? Rating { get; set; }
+
+        // DB stores this as INTEGER 0/1 and it is NOT NULL
         [Required]
-        public string Director { get; set; } = string.Empty;
+        public bool Edited { get; set; }
 
-        // Must be one of: G, PG, PG-13, R
-        [Required]
-        public string Rating { get; set; } = string.Empty;
-
-        // Optional
-        public bool? Edited { get; set; }
-
-        // Optional
         public string? LentTo { get; set; }
 
-        // Optional, max 25 chars
+        // DB stores this as INTEGER 0/1 and it is NOT NULL
+        [Required]
+        public bool CopiedToPlex { get; set; }
+
         [StringLength(25)]
         public string? Notes { get; set; }
     }
